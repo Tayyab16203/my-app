@@ -1,18 +1,23 @@
 import React,{useState} from 'react'
 
-
 export default function TextForm(props) {
     const handleUpClick = () =>{
         // console.log("Uppercase was Clicked" + text);
         let newtext = text.toUpperCase();
         settext(newtext)
     }
-    const handleLoClick = () =>{
-        // console.log("Uppercase was Clicked" + text);
+     const handleLoClick = () =>{
         let newtext = text.toLowerCase();
         settext(newtext)
     }
-
+    const handleclearClick = () =>{
+        settext("")
+    }
+    const handleCopy = () =>{
+        let cotext = document.getElementById("myBox");
+        cotext.select();
+        navigator.clipboard.writeText(cotext.value);
+    }
     const handleOnChange = (event) =>{
         console.log("On change");
         settext(event.target.value)
@@ -30,6 +35,8 @@ export default function TextForm(props) {
         </div>
         <button className='btn btn-primary mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
         <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to Lopercase</button>
+        <button className='btn btn-primary mx-2' onClick={handleclearClick}>Clear text</button>
+        <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy text</button>
     </div>
     <div className="container my-3">
         <h2>Your text summery</h2>
